@@ -5,9 +5,9 @@ class NoteItem extends StatelessWidget {
   const NoteItem({Key? key}) : super(key: key);
   final itemColor = const [
     Colors.amberAccent,
-    Colors.cyan,
+    Colors.deepOrange,
+    Colors.brown,
     Colors.deepOrangeAccent,
-    Colors.green
   ];
 
   @override

@@ -20,7 +20,7 @@ class NotesView extends StatelessWidget {
                 return const AddNoteBottomSheet();
               });
         },
-        backgroundColor: Colors.yellow,
+        backgroundColor: Colors.green,
         child: const Icon(CupertinoIcons.add),
       ),
       body: const NotesViewBody(),
