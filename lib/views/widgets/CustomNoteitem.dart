@@ -39,7 +39,7 @@ class NoteItem extends StatelessWidget {
                 child: Text(
                   'Build your career with Nono',
                   style: TextStyle(
-                      color: Colors.black.withOpacity(0.6), fontSize: 20),
+                      color: Colors.black.withOpacity(0.5), fontSize: 20),
                 ),
               ),
               trailing: IconButton(

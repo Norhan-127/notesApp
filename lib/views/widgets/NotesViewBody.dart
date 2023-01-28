@@ -14,7 +14,7 @@ class NotesViewBody extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
         child: Column(
           children: const [
-            CustomAppBar(),
+            CustomAppBar(title: 'Notes',icon: CupertinoIcons.search,),
             Expanded(child: NotesListView()),
           ],
         ),
