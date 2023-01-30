@@ -4,12 +4,7 @@ import 'package:notes_app/views/edit_note_view.dart';
 
 class NoteItem extends StatelessWidget {
   const NoteItem({Key? key}) : super(key: key);
-  final itemColor = const [
-    Colors.amberAccent,
-    Colors.deepOrange,
-    Colors.brown,
-    Colors.deepOrangeAccent,
-  ];
+
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +18,7 @@ class NoteItem extends StatelessWidget {
         margin: const EdgeInsets.symmetric(vertical: 3),
         padding: const EdgeInsets.only(top: 24, bottom: 24, left: 16, right: 8),
         decoration: BoxDecoration(
-          color: itemColor[3],
+          color: Colors.cyan,
           borderRadius: BorderRadius.circular(16.0),
         ),
         child: Column(
