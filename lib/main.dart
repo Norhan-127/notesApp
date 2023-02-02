@@ -11,9 +11,10 @@ void main() async {
     ChangeNotifierProvider(create: (context) => AddNoteProvider()),
   ], child: const NotesApp()));
   await Hive.initFlutter();
+  Hive.registerAdapter(NoteModelAdapter());
   await Hive.openBox<NoteModel>(kNotesBox);
   //tell Hive to start storing note model--> Hive.registerAdapter(adapter)
-  Hive.registerAdapter(NoteModelAdapter());
+
 }
 
 class NotesApp extends StatelessWidget {

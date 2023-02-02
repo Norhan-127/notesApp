@@ -9,12 +9,9 @@ class AddNoteBottomSheet extends StatelessWidget {
   Widget build(BuildContext context) {
     return  Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: SingleChildScrollView(
-          // this widget to  prevent user's action on UI
-          child: AbsorbPointer(
-            absorbing: Provider.of<AddNoteProvider>(context).addNoteLoading,
-              child: const AddNoteForm()),
-        ));
+        child: AbsorbPointer(
+          absorbing: Provider.of<AddNoteProvider>(context).addNoteLoading,
+            child: const SingleChildScrollView(child: AddNoteForm())));
   }
 }
 
