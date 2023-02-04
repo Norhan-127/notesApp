@@ -7,9 +7,13 @@ import '../../utilities/constants.dart';
 class DisplayNotesModel with ChangeNotifier {
    List<NoteModel> notes=[];
   fetchAllNotes() {
-    var notesBox = Hive.box<NoteModel>(kNotesBox);
-    notes = notesBox.values.toList();
-    notifyListeners();
-    debugPrint('Notes has been displayed successfully!');
+    try {
+      var notesBox = Hive.box<NoteModel>(kNotesBox);
+      notes = notesBox.values.toList();
+      notifyListeners();
+      debugPrint('Notes has been displayed successfully!');
+    }catch(e){
+      debugPrint(e.toString());
+    }
   }
 }

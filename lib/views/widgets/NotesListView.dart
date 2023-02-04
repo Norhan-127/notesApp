@@ -9,11 +9,11 @@ class NotesListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var notes=Provider.of<DisplayNotesModel>(context).notes!;
+    var notes=Provider.of<DisplayNotesModel>(context).notes;
     return ListView.builder(
         itemCount:notes.length ,
         itemBuilder: (context, index) {
-          return const NoteItem();
+          return  NoteItem(note: notes[index],);
         });
   }
 }

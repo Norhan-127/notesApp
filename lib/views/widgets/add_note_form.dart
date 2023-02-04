@@ -26,7 +26,8 @@ class _AddNoteFormState extends State<AddNoteForm> {
         key: _key,
         autovalidateMode: _autoValidateMode,
         child: Padding(
-          padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+          padding:
+              EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
           child: Column(
             children: [
               const SizedBox(
@@ -56,10 +57,13 @@ class _AddNoteFormState extends State<AddNoteForm> {
                   onTap: () {
                     if (_key.currentState!.validate()) {
                       _key.currentState!.save();
+                      DateTime now = DateTime.now();
+                      var currentTime = DateTime(
+                          now.year, now.month, now.day);
                       var note = NoteModel(
                           title: title!,
                           subtitle: subtitle!,
-                          date: DateTime.now().toString(),
+                          date: currentTime.toString(),
                           color: Colors.amberAccent.value);
                       provider.addNote(note);
                     } else {
