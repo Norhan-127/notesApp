@@ -16,7 +16,6 @@ void main() async {
   Hive.registerAdapter(NoteModelAdapter());
   await Hive.openBox<NoteModel>(kNotesBox);
   //tell Hive to start storing note model--> Hive.registerAdapter(adapter)
-
 }
 
 class NotesApp extends StatelessWidget {
