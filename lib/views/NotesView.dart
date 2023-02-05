@@ -18,7 +18,6 @@ class _NotesViewState extends State<NotesView> {
     super.initState();
     Future.delayed(Duration.zero, () {
       Provider.of<DisplayNotesModel>(context,listen: false).fetchAllNotes();
-
     });
   }
   @override

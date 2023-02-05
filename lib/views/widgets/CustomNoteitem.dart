@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:notes_app/controller/display_notes/notes_list_prov.dart';
 import 'package:notes_app/models/note_model.dart';
 import 'package:notes_app/views/edit_note_view.dart';
+import 'package:provider/provider.dart';
 
 class NoteItem extends StatelessWidget {
   const NoteItem({Key? key, required this.note}) : super(key: key);
@@ -11,7 +13,7 @@ class NoteItem extends StatelessWidget {
     return GestureDetector(
       onTap: (){
         Navigator.push(context, MaterialPageRoute(builder: (context){
-          return const EditNoteView();
+          return  EditNoteView(note: note,);
         }));
       },
       child: Container(
@@ -40,6 +42,7 @@ class NoteItem extends StatelessWidget {
               trailing: IconButton(
                 onPressed: () {
                   note.delete();
+                  Provider.of<DisplayNotesModel>(context).fetchAllNotes();
                 },
                 icon: const Icon(
                   CupertinoIcons.delete,
