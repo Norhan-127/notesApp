@@ -42,7 +42,7 @@ class NoteItem extends StatelessWidget {
               trailing: IconButton(
                 onPressed: () {
                   note.delete();
-                  Provider.of<DisplayNotesModel>(context).fetchAllNotes();
+                  Provider.of<DisplayNotesModel>(context,listen: false).fetchAllNotes();
                 },
                 icon: const Icon(
                   CupertinoIcons.delete,

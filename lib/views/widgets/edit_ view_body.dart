@@ -30,7 +30,7 @@ class _EditNoteViewBodyState extends State<EditNoteViewBody> {
               widget.note.title=title?? widget.note.title;
               widget.note.subtitle=content??widget.note.subtitle;
               widget.note.save();
-              Provider.of<DisplayNotesModel>(context).fetchAllNotes();
+              Provider.of<DisplayNotesModel>(context,listen: false).fetchAllNotes();
               Navigator.pop(context);
             },
           ),

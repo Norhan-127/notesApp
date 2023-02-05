@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:notes_app/models/note_model.dart';
 import 'package:provider/provider.dart';
 import '../../controller/add_note_model/add_note_prov.dart';
+import '../../controller/display_notes/notes_list_prov.dart';
 import 'custom_botton.dart';
 import 'custom_text_field.dart';
+import 'package:intl/intl.dart';
 
 class AddNoteForm extends StatefulWidget {
-  const AddNoteForm({Key? key}) : super(key: key);
-
+  const AddNoteForm({Key? key, this.note}) : super(key: key);
+  final NoteModel? note;
   @override
   State<AddNoteForm> createState() => _AddNoteFormState();
 }
@@ -57,15 +59,15 @@ class _AddNoteFormState extends State<AddNoteForm> {
                   onTap: () {
                     if (_key.currentState!.validate()) {
                       _key.currentState!.save();
-                      DateTime now = DateTime.now();
-                      var currentTime = DateTime(
-                          now.year, now.month, now.day);
                       var note = NoteModel(
                           title: title!,
                           subtitle: subtitle!,
-                          date: currentTime.toString(),
+                          date: DateFormat.yMd().format(DateTime.now()),
                           color: Colors.amberAccent.value);
                       provider.addNote(note);
+                      widget.note?.save();
+                      Provider.of<DisplayNotesModel>(context,listen: false).fetchAllNotes();
+                      Navigator.pop(context);
                     } else {
                       _autoValidateMode = AutovalidateMode.always;
                       setState(() {});

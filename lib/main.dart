@@ -8,14 +8,14 @@ import 'package:notes_app/views/NotesView.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
-  runApp(MultiProvider(providers: [
-    ChangeNotifierProvider(create: (context) => AddNoteProvider()),
-    ChangeNotifierProvider(create: (context)=>DisplayNotesModel())
-  ], child: const NotesApp()));
   await Hive.initFlutter();
   Hive.registerAdapter(NoteModelAdapter());
   await Hive.openBox<NoteModel>(kNotesBox);
   //tell Hive to start storing note model--> Hive.registerAdapter(adapter)
+  runApp(MultiProvider(providers: [
+    ChangeNotifierProvider(create: (context) => AddNoteProvider()),
+    ChangeNotifierProvider(create: (context) => DisplayNotesModel())
+  ], child: const NotesApp()));
 }
 
 class NotesApp extends StatelessWidget {
