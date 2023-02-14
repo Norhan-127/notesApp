@@ -5,6 +5,8 @@ import 'package:notes_app/views/widgets/NotesViewBody.dart';
 import 'package:notes_app/views/widgets/add_note_buttom_sheet.dart';
 import 'package:provider/provider.dart';
 
+import '../utilities/constants.dart';
+
 class NotesView extends StatefulWidget {
   const NotesView({Key? key}) : super(key: key);
 
@@ -35,7 +37,7 @@ class _NotesViewState extends State<NotesView> {
                 return const AddNoteBottomSheet();
               });
         },
-        backgroundColor: Colors.green,
+        backgroundColor: AppColors.celadon,
         child: const Icon(CupertinoIcons.add),
       ),
       body: const NotesViewBody(),

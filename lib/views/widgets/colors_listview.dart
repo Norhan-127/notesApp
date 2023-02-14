@@ -1,23 +1,59 @@
 import 'package:flutter/material.dart';
+import 'package:notes_app/utilities/constants.dart';
 
 class ColorItem extends StatelessWidget {
-  const ColorItem({Key? key}) : super(key: key);
-
+  const ColorItem({Key? key, required this.isActive, required this.color}) : super(key: key);
+  final bool isActive;
+  final Color color;
   @override
   Widget build(BuildContext context) {
-    return const CircleAvatar(
-      backgroundColor: Colors.grey,
-      radius: 20,
-    );
+    return isActive
+        ?  CircleAvatar(
+            backgroundColor: Colors.white,
+            radius: 25,
+            child: CircleAvatar(
+              backgroundColor: color,
+              radius: 22,
+            ),
+          )
+        :  CircleAvatar(
+            backgroundColor: color,
+            radius: 25,
+          );
   }
 }
-class ColorsListView extends StatelessWidget {
-  const ColorsListView({Key? key}) : super(key: key);
 
+class ColorsListView extends StatefulWidget {
+  const ColorsListView({Key? key, required this.isActive}) : super(key: key);
+  final bool isActive;
+
+  @override
+  State<ColorsListView> createState() => _ColorsListViewState();
+}
+
+class _ColorsListViewState extends State<ColorsListView> {
+  int currentIndex=0;
+  List<Color> colors=[AppColors.maize,AppColors.pink,AppColors.celadon,AppColors.violet,AppColors.blue];
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-        height: 20 * 2,
-        child: ListView.builder(itemBuilder: (context,index)=>const ColorItem(),scrollDirection:Axis.horizontal ,));
+        height: 25 * 2,
+        child: ListView.builder(
+          itemCount: colors.length,
+          itemBuilder: (context, index) =>  Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 6),
+            child: GestureDetector(
+              onTap: (){
+                currentIndex=index;
+                setState(() {});
+              },
+              child: ColorItem(
+                color: colors[index],
+                isActive: currentIndex==index,
+              ),
+            ),
+          ),
+          scrollDirection: Axis.horizontal,
+        ));
   }
 }
