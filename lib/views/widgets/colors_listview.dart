@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:notes_app/controller/add_note_model/add_note_prov.dart';
+import 'package:notes_app/controller/display_notes/notes_list_prov.dart';
 import 'package:notes_app/utilities/constants.dart';
 import 'package:provider/provider.dart';
 
@@ -12,15 +13,15 @@ class ColorItem extends StatelessWidget {
     return isActive
         ?  CircleAvatar(
             backgroundColor: Colors.white,
-            radius: 25,
+            radius: 27,
             child: CircleAvatar(
               backgroundColor: color,
-              radius: 22,
+              radius: 24,
             ),
           )
         :  CircleAvatar(
             backgroundColor: color,
-            radius: 25,
+            radius: 27,
           );
   }
 }
@@ -39,7 +40,7 @@ class _ColorsListViewState extends State<ColorsListView> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-        height: 25 * 2,
+        height: 27 * 2,
         child: ListView.builder(
           itemCount: colors.length,
           itemBuilder: (context, index) =>  Padding(
@@ -48,6 +49,7 @@ class _ColorsListViewState extends State<ColorsListView> {
               onTap: (){
                 currentIndex=index;
                 Provider.of<AddNoteProvider>(context,listen: false).color=colors[index];
+                Provider.of<DisplayNotesModel>(context,listen: false).color=colors[index];
                 setState(() {});
               },
               child: ColorItem(
