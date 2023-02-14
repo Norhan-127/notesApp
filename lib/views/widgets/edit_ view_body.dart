@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:notes_app/controller/display_notes/notes_list_prov.dart';
 import 'package:notes_app/views/widgets/CustomAppbar.dart';
-import 'package:notes_app/views/widgets/colors_listview.dart';
 import 'package:notes_app/views/widgets/custom_text_field.dart';
+import 'package:notes_app/views/widgets/editNoteColorsList.dart';
 import 'package:provider/provider.dart';
 
 import '../../models/note_model.dart';
@@ -30,7 +30,6 @@ class _EditNoteViewBodyState extends State<EditNoteViewBody> {
             onPressed: () {
               widget.note.title=title?? widget.note.title;
               widget.note.subtitle=content??widget.note.subtitle;
-              Provider.of<DisplayNotesModel>(context,listen: false).changeColor(widget.note);
               widget.note.save();
               Provider.of<DisplayNotesModel>(context,listen: false).fetchAllNotes();
               Navigator.pop(context);
@@ -57,9 +56,9 @@ class _EditNoteViewBodyState extends State<EditNoteViewBody> {
           const SizedBox(
             height: 32,
           ),
-          const Padding(
-            padding: EdgeInsets.all(8.0),
-            child: ColorsListView(isActive: true),
+           Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: EditNoteColorsList(note: widget.note,),
           ),
         ],
       ),

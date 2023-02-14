@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:notes_app/controller/add_note_model/add_note_prov.dart';
-import 'package:notes_app/controller/display_notes/notes_list_prov.dart';
 import 'package:notes_app/utilities/constants.dart';
 import 'package:provider/provider.dart';
 
@@ -36,24 +35,22 @@ class ColorsListView extends StatefulWidget {
 
 class _ColorsListViewState extends State<ColorsListView> {
   int currentIndex=0;
-  List<Color> colors=[AppColors.maize,AppColors.pink,AppColors.celadon,AppColors.violet,AppColors.blue];
   @override
   Widget build(BuildContext context) {
     return SizedBox(
         height: 27 * 2,
         child: ListView.builder(
-          itemCount: colors.length,
+          itemCount: kColorsList.length,
           itemBuilder: (context, index) =>  Padding(
             padding: const EdgeInsets.symmetric(horizontal: 6),
             child: GestureDetector(
               onTap: (){
                 currentIndex=index;
-                Provider.of<AddNoteProvider>(context,listen: false).color=colors[index];
-                Provider.of<DisplayNotesModel>(context,listen: false).color=colors[index];
+                Provider.of<AddNoteProvider>(context,listen: false).color=kColorsList[index];
                 setState(() {});
               },
               child: ColorItem(
-                color: colors[index],
+                color: kColorsList[index],
                 isActive: currentIndex==index,
               ),
             ),
