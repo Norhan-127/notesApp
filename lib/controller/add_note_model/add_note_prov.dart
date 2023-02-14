@@ -4,8 +4,10 @@ import 'package:notes_app/models/note_model.dart';
 import 'package:notes_app/utilities/constants.dart';
 class AddNoteProvider with ChangeNotifier{
    bool addNoteLoading=false;
+   Color color=AppColors.maize;
   addNote(NoteModel note) async{
     try {
+      note.color=color.value;
       addNoteLoading = true;
       notifyListeners();
       debugPrint ('Loading') ;
